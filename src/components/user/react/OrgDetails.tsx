@@ -1,10 +1,18 @@
+import { useState } from 'react'
+import { listenKeys} from 'nanostores'
 import { useStore } from '@nanostores/react'
 import { auth } from '../../../lib/authStore'
 
 export function OrgDetails() {
   const $clerk = useStore(auth)
-  const organization = $clerk?.organization
+  const [organization, setOrganization] = useState($clerk?.organization)
 
+  $clerk?.addListener((clerk) => {
+    if (organization?.id !== clerk.organization?.id) {
+      setOrganization(clerk.organization)
+    }
+  })
+  
   return (
     <div
       className="bg-white shadow overflow-hidden sm:rounded-lg"

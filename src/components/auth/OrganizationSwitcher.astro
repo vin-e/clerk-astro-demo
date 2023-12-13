@@ -13,7 +13,6 @@ const { isSmall = false } = Astro.props;
       
       orgSwitchers.forEach((orgSwitcher) => {
         const isSmall = orgSwitcher.dataset.isSmall === 'true'
-        console.log(orgSwitcher, isSmall)
         clerk.mountOrganizationSwitcher(orgSwitcher, {
           afterCreateOrganizationUrl: '/dashboard',
           appearance: {
