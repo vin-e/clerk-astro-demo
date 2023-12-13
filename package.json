@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.3.2",
     "@astrojs/react": "^3.0.7",
     "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/vercel": "^6.0.2",
     "@clerk/clerk-js": "^4.66.0",
     "@clerk/clerk-sdk-node": "^4.13.1",
     "@nanostores/react": "^0.7.1",
