@@ -1,0 +1,28 @@
+{
+  "name": "clerk-astro-demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.2",
+    "@astrojs/react": "^3.0.7",
+    "@astrojs/tailwind": "^5.0.3",
+    "@clerk/clerk-js": "^4.66.0",
+    "@clerk/clerk-sdk-node": "^4.13.1",
+    "@nanostores/react": "^0.7.1",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "astro": "^4.0.4",
+    "nanostores": "^0.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3"
+  }
+}

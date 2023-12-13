@@ -1,0 +1,26 @@
+---
+const { classes } = Astro.props
+---
+
+<div class=`auth-signed-in hidden ${classes ?? ''}`>
+  <slot />
+</div>
+
+<script>
+  import { auth } from '../../lib/authStore'
+
+  auth.subscribe((clerk) => {
+    if (clerk !== null && clerk.isReady()) {
+      const signedIn = document.querySelectorAll('.auth-signed-in')!
+      if (!!clerk.user) {
+        signedIn.forEach((el) => {
+          el.classList.remove('hidden')
+        })
+      } else {
+        signedIn.forEach((el) => {
+          el.classList.add('hidden')
+        })
+      }
+    }
+  })
+</script>

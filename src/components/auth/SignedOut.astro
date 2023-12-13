@@ -1,0 +1,21 @@
+---
+---
+
+<div id="auth-signed-out" class="hidden">
+  <slot />
+</div>
+
+<script>
+  import { auth } from '../../lib/authStore'
+
+  auth.subscribe((clerk) => {
+    if (clerk !== null && clerk.isReady()) {
+      const signedOut = document.getElementById('auth-signed-out')!
+      if (clerk.user === null) {
+        signedOut.classList.remove('hidden')
+      } else {
+        signedOut.classList.add('hidden')
+      }
+    }
+  })
+</script>

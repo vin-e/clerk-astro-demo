@@ -1,0 +1,38 @@
+---
+const { isSmall = false } = Astro.props;
+---
+
+<div class="auth-orginization-switcher" data-is-small={isSmall.toString()}></div>
+
+<script>
+  import { auth } from '../../lib/authStore'
+
+  auth.subscribe((clerk) => {
+    if (clerk !== null && clerk.isReady()) {
+      const orgSwitchers = document.querySelectorAll<HTMLDivElement>('.auth-orginization-switcher')!
+      
+      orgSwitchers.forEach((orgSwitcher) => {
+        const isSmall = orgSwitcher.dataset.isSmall === 'true'
+        console.log(orgSwitcher, isSmall)
+        clerk.mountOrganizationSwitcher(orgSwitcher, {
+          afterCreateOrganizationUrl: '/dashboard',
+          appearance: {
+            elements: isSmall && {
+              organizationSwitcherTriggerIcon: 'hidden',
+              organizationPreviewTextContainer: 'hidden',
+              organizationSwitcherTrigger: 'pr-0',
+            },
+          }
+        })
+      })
+    }
+  })
+</script>
+
+<style is:global>
+  .auth-orginization-switcher {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+</style>

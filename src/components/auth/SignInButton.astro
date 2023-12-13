@@ -1,0 +1,46 @@
+---
+
+---
+
+<button
+  id='auth-sign-in-button'
+  type='button'
+  class="flex content-center gap-2 px-4 py-2 font-semibold text-white transition-colors duration-200 rounded-lg bg-primary-600 hover:bg-primary-700"
+>
+  Sign In
+  <div class="m-auto">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.16669 7.00033H12.8334M12.8334 7.00033L7.00002 1.16699M12.8334 7.00033L7.00002 12.8337"
+        stroke="white"
+        stroke-width="1.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</button>
+
+<script>
+  import { auth } from '../../lib/authStore'
+
+  auth.subscribe((clerk) => {
+    if (clerk !== null && clerk.isReady()) {
+      const signInButton = document.getElementById('auth-sign-in-button')
+      if (signInButton) {
+        signInButton.addEventListener('click', () => {
+          clerk.openSignIn({
+            afterSignInUrl: '/dashboard',
+            afterSignUpUrl: '/dashboard',
+          })
+        })
+      }
+    }
+  })
+</script>

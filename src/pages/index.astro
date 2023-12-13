@@ -1,0 +1,78 @@
+---
+import Layout from '../components/Layout.astro'
+import { Image } from "astro:assets"
+import componentImage from '../../public/images/components.svg'
+import SignedIn from '../components/auth/SignedIn.astro'
+import SignedOut from '../components/auth/SignedOut.astro'
+import SignInButton from '../components/auth/SignInButton.astro'
+---
+
+<Layout>
+	<article class="grid lg:grid-cols-2">
+		<div class="px-8 py-20 md:px-20 lg:py-48">
+			<h1 class="text-5xl font-semibold text-transparent md:text-6xl gradient">
+				Auth starts here.
+			</h1>
+			<p class="mt-2 text-lg">
+				A simple and powerful Astro template featuring authentication and
+				user management powered by Clerk.
+			</p>
+			<div class="flex gap-2 mt-8">
+				<SignedOut>
+					<SignInButton />
+				</SignedOut>
+				<SignedIn>
+					<a
+						href="/dashboard"
+						class="flex content-center gap-2 px-4 py-2 font-semibold text-white transition-colors duration-200 rounded-lg bg-primary-600 hover:bg-primary-700"
+					>
+						View Demo
+						<div class="m-auto">
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 14 14"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M1.16669 7.00033H12.8334M12.8334 7.00033L7.00002 1.16699M12.8334 7.00033L7.00002 12.8337"
+									stroke="white"
+									stroke-width="1.66667"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+					</a>
+				</SignedIn>
+				<a
+					class="flex gap-2 px-4 py-2 font-semibold text-gray-600 transition duration-100 rounded-lg hover:text-gray-800"
+					href="#features"
+				>
+					Learn more
+					<div class="m-auto">
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 20 20"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M6.66666 10.0003L9.99999 13.3337M9.99999 13.3337L13.3333 10.0003M9.99999 13.3337V6.66699M18.3333 10.0003C18.3333 14.6027 14.6024 18.3337 9.99999 18.3337C5.39762 18.3337 1.66666 14.6027 1.66666 10.0003C1.66666 5.39795 5.39762 1.66699 9.99999 1.66699C14.6024 1.66699 18.3333 5.39795 18.3333 10.0003Z"
+								stroke="#475467"
+								stroke-width="1.66667"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="flex flex-col justify-center">
+			<Image src={componentImage} alt="Clerk embeddable components" />
+		</div>
+	</article>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from '../../components/Layout.astro'
+import { OrgDetails } from '../../components/user/react/OrgDetails'
+import { SessionDetails } from '../../components/user/react/SessionDetails'
+import { UserDetails } from '../../components/user/react/UserDetails'
+import { UserGreeting } from '../../components/user/react/UserGreeting'
+
+// TODO: Add UTM params
+// ?utm_source=vercel-template&utm_medium=template_repos&utm_campaign=nextjs_template
+---
+<Layout>
+  <div class="px-8 py-12 sm:py-16 md:px-20">
+    <UserGreeting client:load />
+    <div class="grid gap-4 mt-8 lg:grid-cols-3">
+      <UserDetails client:load />
+      <SessionDetails client:load />
+      <OrgDetails client:load />
+    </div>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">
+      What's next?
+    </h2>
+    Read the{" "}
+    <a
+      class="font-medium text-primary-600 hover:underline"
+      href="https://clerk.com/docs"
+      target="_blank"
+    >
+      Clerk Docs -&gt;
+    </a>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">You are viewing</h2>
+    The React component version of this page.{" "}
+  </div>
+</Layout>../../components/user/react/ReactUserDetails../../components/user/react/UserDetails
