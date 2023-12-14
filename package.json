@@ -10,17 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.3.2",
     "@astrojs/react": "^3.0.7",
     "@astrojs/tailwind": "^5.0.3",
-    "@astrojs/vercel": "^6.0.2",
-    "@clerk/backend": "0.36.0",
+    "@astrojs/vercel": "^6.1.0",
     "@clerk/clerk-js": "^4.67.0",
     "@clerk/clerk-sdk-node": "^4.13.2",
     "@nanostores/react": "^0.7.1",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
-    "astro": "^4.0.4",
+    "astro": "^4.0.5",
     "astro-htmx": "^1.0.3",
     "htmx.org": "^1.9.9",
     "nanostores": "^0.9.5",
@@ -28,5 +26,10 @@
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "astro-htmx": {
+      "astro": "$astro"
+    }
   }
 }
