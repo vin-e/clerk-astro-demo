@@ -10,11 +10,6 @@ The dashboard is currently using react components to render the user, session an
 
 On Vercel at: [https://clerk-astro-demo-vin-e.vercel.app/](https://clerk-astro-demo-vin-e.vercel.app/)
 
-## TO DO List
-
-[ ] - Add HTMX version of the dashboard with protected api's
-[ ] - Add full vanilla js version of dashboard
-
 ## NOTE TO CLERK
 
 Please feel free to take this code and publish/modify on your github channel. 
