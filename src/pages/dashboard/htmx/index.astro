@@ -1,0 +1,61 @@
+---
+import Layout from '../../../components/Layout.astro'
+---
+
+<Layout>
+  <div class="px-8 py-12 sm:py-16 md:px-20">
+    <div hx-get="/api/auth" hx-trigger="load, org-updated from:body" hx-target="this" hx-swap="innerHTML">
+      <div class="grid gap-4 mt-8 lg:grid-cols-3">
+        <div
+          class="text-gray-700 px-4 py-5" 
+          style={{boxShadow: `0px 20px 24px -4px rgba(16, 24, 40, 0.08)`}}
+        >
+          Loading user data...
+        </div>
+        <div
+          class="text-gray-700 px-4 py-5" 
+          style={{boxShadow: `0px 20px 24px -4px rgba(16, 24, 40, 0.08)`}}
+        >
+          Loading session data...
+        </div>
+        <div
+          class="text-gray-700 px-4 py-5" 
+          style={{boxShadow: `0px 20px 24px -4px rgba(16, 24, 40, 0.08)`}}
+        >
+          Loading organization data...
+        </div>
+      </div>
+    </div>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">
+      What's next?
+    </h2>
+    Read the{" "}
+    <a
+      class="font-medium text-primary-600 hover:underline"
+      href="https://clerk.com/docs"
+      target="_blank"
+    >
+      Clerk Docs -&gt;
+    </a>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">You are viewing</h2>
+    The HTMX component version of this page.{" "}
+    View the <a href="/dashboard" class="font-medium text-primary-600 hover:underline">React version</a>
+  </div>
+</Layout>
+
+<script>
+import { auth } from '../../../lib/authStore'
+
+auth.subscribe(($clerk) => {
+  if ($clerk) {
+    let organization = $clerk.organization
+    $clerk.addListener((clerk) => {
+      if (organization?.id !== clerk.organization?.id) {
+        organization = clerk.organization
+        const event = new CustomEvent('org-updated')
+        document.body.dispatchEvent(event)
+      }
+    })
+  }
+})
+</script>
