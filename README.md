@@ -13,3 +13,7 @@ On Vercel at: [https://clerk-astro-demo-vin-e.vercel.app/](https://clerk-astro-d
 ## NOTE TO CLERK
 
 Please feel free to take this code and publish/modify on your github channel. 
+
+## Known issue(s)
+
+* At the moment this implementation does not support ViewTransitions (or HTMX boost). The pages are expected to be fully rendered and the javascript code to watch for clerk and clerk.isReady() does not execute.
