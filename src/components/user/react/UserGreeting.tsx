@@ -6,7 +6,7 @@ export function UserGreeting() {
   const user = $clerk?.user
   return (
     <h1 className="text-3xl font-semibold text-black" suppressHydrationWarning>
-      👋 Hi, {user?.firstName || `Stranger`}
+      &#x1F44B; Hi, {user?.firstName || `Stranger`}
     </h1>
   )
 }

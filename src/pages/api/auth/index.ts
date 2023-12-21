@@ -25,7 +25,7 @@ export const GET: APIRoute = async ({request}) => {
 }
 
 const getUserGreeting = (user: User) => {
-  return `<h1 class="text-3xl font-semibold text-black">👋 Hi, ${user?.firstName || 'Stranger'}</h1>`
+  return `<h1 class="text-3xl font-semibold text-black">&#x1F44B; Hi, ${user?.firstName || 'Stranger'}</h1>`
 }
 
 const getUserDetails = (user: User) => {

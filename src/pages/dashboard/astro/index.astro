@@ -1,0 +1,63 @@
+---
+import Layout from '../../../components/Layout.astro'
+import UserGreeting from '../../../components/user/astro/UserGreeting.astro'
+import UserDetails from '../../../components/user/astro/UserDetails.astro'
+import SessionDetails from '../../../components/user/astro/SessionDetails.astro'
+import OrgDetails from '../../../components/user/astro/OrgDetails.astro'
+
+import { createClerkClient } from '@clerk/clerk-sdk-node'
+const publishableKey = import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY
+const secretKey = import.meta.env.CLERK_SECRET_KEY
+
+const request = Astro.request
+const clerk = createClerkClient({ publishableKey, secretKey })
+const { toAuth } = await clerk.authenticateRequest({ request, publishableKey, secretKey })
+const auth = toAuth()
+const user = await clerk.users.getUser(auth!.userId!)
+const session = await clerk.sessions.getSession(auth!.sessionId!)
+const org = auth?.orgId ? await clerk.organizations.getOrganization({ organizationId: auth.orgId }) : undefined
+---
+
+<Layout>
+  <div class="px-8 py-12 sm:py-16 md:px-20">
+    <UserGreeting name={user.firstName} />
+    <div class="grid gap-4 mt-8 lg:grid-cols-3">
+      <UserDetails user={user} />
+      <SessionDetails session={session} />
+      <OrgDetails org={org} />
+    </div>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">
+      What's next?
+    </h2>
+    Read the{" "}
+    <a
+      class="font-medium text-primary-600 hover:underline"
+      href="https://clerk.com/docs"
+      target="_blank"
+    >
+      Clerk Docs -&gt;
+    </a>
+    <h2 class="mt-16 mb-4 text-3xl font-semibold text-black">You are viewing</h2>
+    The Astro component version of this page.{" "}
+
+    <br />
+    View the <a href="/dashboard/react" class="font-medium text-primary-600 hover:underline">React version</a>
+    <br />
+    View the <a href="/dashboard/htmx" class="font-medium text-primary-600 hover:underline">HTMX version</a>
+  </div>
+</Layout>
+
+<script>
+  import { auth } from '../../../lib/authStore'
+  
+  auth.subscribe(($clerk) => {
+    if ($clerk) {
+      let organization = $clerk.organization
+      $clerk.addListener((clerk) => {
+        if (organization?.id !== clerk.organization?.id) {
+          location.reload()
+        }
+      })
+    }
+  })
+  </script>
