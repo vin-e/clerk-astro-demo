@@ -1,6 +1,8 @@
 ***
 
-For an updated and maintained version of the astro and clerk implementaiton please visit [maybrito's repo](https://github.com/maykbrito/astro-clerk-auth)
+# NOT MAINTAINED 
+
+[maybrito](https://github.com/maykbrito/astro-clerk-auth) has an updated and maintained version of the astro and clerk implementaiton
 
 ***
 
