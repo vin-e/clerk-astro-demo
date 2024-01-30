@@ -1,3 +1,9 @@
+***
+
+For an updated and maintained version of the astro and clerk implementaiton please visit [maybrito's repo](https://github.com/maykbrito/astro-clerk-auth)
+
+***
+
 # Clerk and Astro SSR Template
 
 ## Introduction
